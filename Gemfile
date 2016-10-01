@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
+gem 'impressionist', '~> 1.5', '>= 1.5.1'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 gem 'devise', '~> 4.2'

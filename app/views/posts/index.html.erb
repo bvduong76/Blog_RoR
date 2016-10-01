@@ -4,6 +4,6 @@
       <p class="date"><%= post.created_at.strftime("%B %d, %Y") %>
         <br/> Create by: <span style="color:darkgreen;">
       <%= post.email %></span>
-      </p>
+        | Views: <%= post.impressionist_count%></p>
     </div>
 <% end %>
