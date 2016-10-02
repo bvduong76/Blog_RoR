@@ -11,7 +11,7 @@
   </p>
   <hr/>
   <p class="body">
-    <%= @post.body %>
+    <%= markdown(@post.body).html_safe %>
   </p>
   <div id="comments">
     <h2><%= @post.comments.count %> Comments</h2>
