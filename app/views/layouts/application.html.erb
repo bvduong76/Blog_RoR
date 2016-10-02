@@ -1,15 +1,55 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>1312100</title>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Raleway:400,700' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <%= favicon_link_tag 'favicon.ico' %>
-    <%= csrf_meta_tags %>
-  </head>
+<head>
+  <title>1312100</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Raleway:400,700' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= favicon_link_tag 'favicon.ico' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div>
+  <!--Layout sidebar-->
+  <div id="sidebar">
+    <div id="logo">
+      <%= link_to root_path do %>
+          <%= image_tag "logo.jpg" %>
+      <% end %>
+    </div>
+    <ul>
+      <li><%= link_to "Blog", root_path %></li>
+      <li>About</li>
+    </ul>
+  </div>
 
-  <body>
-    <%= yield %>
-  </body>
+  <!--Layout post blog-->
+  <div id="main_content">
+    <div id="header">
+      <% if current_page?(root_path) %>
+          <p>All Posts</p>
+      <% else %>
+          <%= link_to "Back to All Posts", root_path %>
+      <% end %>
+
+      <% if user_signed_in? %>
+          <div class="buttons">
+            <span><%= current_user.email %></span>
+            <button class="button"><%= link_to "New Post", new_post_path %></button>
+            <button class="button"><%= link_to "Log Out", destroy_user_session_path, method: :delete %></button>
+          </div>
+      <% else %>
+          <div class="buttons">
+            <button class="button"><%= link_to "Login", "#{root_url}users/sign_in" %></button>
+          </div>
+      <% end %>
+
+    </div>
+      <%= yield %>
+    </div>
+
+  </div>
+
+</body>
+
 </html>

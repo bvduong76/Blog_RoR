@@ -3,10 +3,10 @@
     <%= @post.title %>
   </h1>
   <p class="date">
-    <%= time_ago_in_words(@post.created_at) %> ago
+    Submittd <%= time_ago_in_words(@post.created_at) %> ago | by <span style="color: darkgreen;"><%= @post.email %></span>
     <% if user_signed_in? && current_user.email == @post.email %>
-        | <%= link_to 'Edit', edit_post_path(@post) %>
-        | <%= link_to 'Delete', post_path(@post), method: :delete, data: {confirm: 'Are you sure?'} %>
+        | <%= link_to 'Edit', edit_post_path(@post),style: 'color:blue;' %>
+        | <%= link_to 'Delete', post_path(@post), method: :delete, data: {confirm: 'Are you sure?'} ,style: 'color:blue;'%>
     <% end %>
   </p>
   <hr/>
@@ -14,9 +14,7 @@
     <%= @post.body %>
   </p>
   <div id="comments">
-    <h2>
-      <%= @post.comments.count %> Comments
-    </h2>
+    <h2><%= @post.comments.count %> Comments</h2>
     <%= render @post.comments %>
 
     <h3>Add a comment:</h3>
